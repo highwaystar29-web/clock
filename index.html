@@ -4,41 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>アナログ時計</title>
+
 <style>
-  body {
-    margin: 0;
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .clock {
-    width: 300px;
-    height: 300px;
-    border: 8px solid #fff;
-    border-radius: 50%;
-    position: relative;
-  }
-  .hand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-origin: bottom;
-    transform: translateX(-50%);
-  }
-  .hour { width: 6px; height: 70px; background: #fff; }
-  .minute { width: 4px; height: 100px; background: #ccc; }
-  .second { width: 2px; height: 120px; background: red; }
-  .center {
-    width: 10px; height: 10px; background: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-  }
+body {
+  margin: 0;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 時計本体 */
+.clock {
+  width: 300px;
+  height: 300px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* 針の共通設定（ここが重要） */
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+}
+
+/* 時針 */
+.hour {
+  width: 6px;
+  height: 70px;
+  background: #fff;
+}
+
+/* 分針 */
+.minute {
+  width: 4px;
+  height: 100px;
+  background: #ccc;
+}
+
+/* 秒針 */
+.second {
+  width: 2px;
+  height: 120px;
+  background: red;
+}
+
+/* 中心 */
+.center {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>
 </head>
+
 <body>
 
 <div class="clock">
@@ -51,6 +79,7 @@
 <script>
 function updateClock() {
   const now = new Date();
+
   const sec = now.getSeconds();
   const min = now.getMinutes();
   const hr = now.getHours();
@@ -60,11 +89,11 @@ function updateClock() {
   const hrDeg = (hr % 12) * 30 + min * 0.5;
 
   document.getElementById("second").style.transform =
-    `translateX(-50%) rotate(${secDeg}deg)`;
+    `translate(-50%, 0) rotate(${secDeg}deg)`;
   document.getElementById("minute").style.transform =
-    `translateX(-50%) rotate(${minDeg}deg)`;
+    `translate(-50%, 0) rotate(${minDeg}deg)`;
   document.getElementById("hour").style.transform =
-    `translateX(-50%) rotate(${hrDeg}deg)`;
+    `translate(-50%, 0) rotate(${hrDeg}deg)`;
 }
 
 setInterval(updateClock, 1000);
