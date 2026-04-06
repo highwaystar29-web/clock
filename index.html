@@ -24,7 +24,7 @@ body {
   position: relative;
 }
 
-/* 針の共通設定（ここが重要） */
+/* 針の共通 */
 .hand {
   position: absolute;
   bottom: 50%;
@@ -46,11 +46,11 @@ body {
   background: #ccc;
 }
 
-/* 秒針 */
+/* 秒針（青に変更） */
 .second {
   width: 2px;
   height: 120px;
-  background: red;
+  background: #00aaff;
 }
 
 /* 中心 */
@@ -64,15 +64,56 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* 数字（1〜12） */
+.number {
+  position: absolute;
+  color: #fff;
+  font-size: 20px;
+  font-family: sans-serif;
+  transform: translate(-50%, -50%);
+}
+
+/* 各数字の位置 */
+.n1  { top: 18%; left: 75%; }
+.n2  { top: 30%; left: 88%; }
+.n3  { top: 50%; left: 95%; }
+.n4  { top: 70%; left: 88%; }
+.n5  { top: 82%; left: 75%; }
+.n6  { top: 90%; left: 50%; }
+.n7  { top: 82%; left: 25%; }
+.n8  { top: 70%; left: 12%; }
+.n9  { top: 50%; left: 5%;  }
+.n10 { top: 30%; left: 12%; }
+.n11 { top: 18%; left: 25%; }
+.n12 { top: 8%;  left: 50%; }
+
 </style>
 </head>
 
 <body>
 
 <div class="clock">
+
+  <!-- 数字 -->
+  <div class="number n1">1</div>
+  <div class="number n2">2</div>
+  <div class="number n3">3</div>
+  <div class="number n4">4</div>
+  <div class="number n5">5</div>
+  <div class="number n6">6</div>
+  <div class="number n7">7</div>
+  <div class="number n8">8</div>
+  <div class="number n9">9</div>
+  <div class="number n10">10</div>
+  <div class="number n11">11</div>
+  <div class="number n12">12</div>
+
+  <!-- 針 -->
   <div class="hand hour" id="hour"></div>
   <div class="hand minute" id="minute"></div>
   <div class="hand second" id="second"></div>
+
   <div class="center"></div>
 </div>
 
